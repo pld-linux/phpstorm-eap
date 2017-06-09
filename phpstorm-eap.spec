@@ -3,7 +3,7 @@
 Summary:	PhpStorm Early Access Program
 Name:		phpstorm-eap
 Version:	172.2827.17
-Release:	1
+Release:	0.1
 # TODO: figure out what's the licensing and redistribution
 License:	?
 Group:		Development/Tools

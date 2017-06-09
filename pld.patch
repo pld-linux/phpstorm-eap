@@ -1,7 +1,16 @@
---- PhpStorm-163.7743.50/bin/phpstorm.sh	2016-11-24 20:01:18.624544058 +0200
-+++ PhpStorm-163.7743.50/bin/phpstorm.sh	2016-11-27 12:51:53.104141826 +0200
-@@ -178,6 +178,9 @@
-   CLASSPATH="$CLASSPATH:$WEBIDE_CLASSPATH"
+--- PhpStorm-172.2827.17/bin/phpstorm.sh	2017-06-07 15:25:24.000000000 +0300
++++ PhpStorm-172.2827.17/bin/phpstorm.sh	2017-06-10 02:20:48.179575500 +0300
+@@ -177,7 +177,7 @@
+   message "Cannot find VM options file"
+ fi
+ 
+-IS_EAP="true"
++IS_EAP="false"
+ if [ "$IS_EAP" = "true" ]; then
+   OS_NAME=`echo "$OS_TYPE" | "$TR" '[:upper:]' '[:lower:]'`
+   AGENT_LIB="yjpagent-$OS_NAME$BITS"
+@@ -198,6 +198,9 @@
+   CLASSPATH="$CLASSPATH:$PHPSTORM_CLASSPATH"
  fi
  
 +WEBIDE_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/PhpStorm"
@@ -10,8 +19,9 @@
  # ---------------------------------------------------------------------
  # Run the IDE.
  # ---------------------------------------------------------------------
-@@ -196,6 +199,7 @@
-   -Didea.paths.selector=PhpStorm2016.3 \
+@@ -211,7 +214,8 @@
+   "-XX:HeapDumpPath=$HOME/java_error_in_PHPSTORM.hprof" \
+   -Didea.paths.selector=PhpStorm2017.2 \
    "-Djb.vmOptionsFile=$VM_OPTIONS_FILE" \
 +  -Dwebide.config.dir=$WEBIDE_CONFIG_DIR -Dwebide.cache.dir=$WEBIDE_CACHE_DIR \
    ${IDE_PROPERTIES_PROPERTY} \
@@ -19,8 +29,8 @@
 +  -Didea.platform.prefix=PhpStorm -Didea.jre.check=false \
    com.intellij.idea.Main \
    "$@"
---- PhpStorm-145.258.2/bin/idea.properties~	2016-03-16 17:02:05.000000000 +0200
-+++ PhpStorm-145.258.2/bin/idea.properties	2016-03-21 11:07:02.191952728 +0200
+--- PhpStorm-172.2827.17/bin/idea.properties	2017-06-07 15:25:24.000000000 +0300
++++ PhpStorm-172.2827.17/bin/idea.properties	2017-06-09 19:21:47.318697524 +0300
 @@ -6,21 +6,25 @@
  # Uncomment this option if you want to customize path to IDE config folder. Make sure you're using forward slashes.
  #---------------------------------------------------------------------
