@@ -1,18 +1,19 @@
+%define		product	phpstorm
 %include	/usr/lib/rpm/macros.java
-Summary:	Lightweight and Smart PHP IDE
-Name:		phpstorm
-Version:	2017.1.4
+Summary:	PhpStorm Early Access Program
+Name:		phpstorm-eap
+Version:	172.2827.17
 Release:	1
 # TODO: figure out what's the licensing and redistribution
 License:	?
 Group:		Development/Tools
-Source0:	https://download.jetbrains.com/webide/PhpStorm-%{version}.tar.gz
-# NoSource0-md5:	1aa6f479b6edb92586388acb0b8e73a2
+Source0:	http://download.jetbrains.com/webide/PhpStorm-EAP-%{version}.tar.gz
+# NoSource0-md5:	17d11801f4e2aff1345a06622ec9afa0
 NoSource:	0
-Source1:	%{name}.desktop
-Source2:	%{name}.py
+Source1:	%{product}.desktop
+Source2:	%{product}.py
 Patch0:		pld.patch
-URL:		http://www.jetbrains.com/phpstorm/
+URL:		https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Early+Access+Program
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
@@ -33,7 +34,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # use /usr/lib, 64bit files do not conflict with 32bit files (64 suffix)
 # this allows to install both arch files and to use 32bit jdk on 64bit os
-%define		_appdir		%{_prefix}/lib/%{name}
+%define		_appdir		%{_prefix}/lib/%{product}
 
 %description
 PhpStorm is a lightweight and smart PHP IDE focused on developer
@@ -46,7 +47,7 @@ Note: PhpStorm includes all the functionality of WebStorm (HTML/CSS
 Editor, JavaScript Editor) and adds full-fledged support for PHP.
 
 %prep
-%setup -qn PhpStorm-171.4694.2
+%setup -qn PhpStorm-%{version}
 
 # keep only single arch files (don't want to pull 32bit deps by default),
 # if you want to mix, install rpm from both arch
@@ -75,28 +76,28 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_appdir},%{_bindir},%{_pixmapsdir},%{_desktopdir}}
 cp -l build.txt $RPM_BUILD_ROOT/cp-test && l=l && rm -f $RPM_BUILD_ROOT/cp-test
 cp -a$l bin help lib plugins $RPM_BUILD_ROOT%{_appdir}
-ln -s %{_pixmapsdir}/%{name}.png $RPM_BUILD_ROOT%{_appdir}/bin
-cp -p phpstorm.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
+ln -s %{_pixmapsdir}/%{product}.png $RPM_BUILD_ROOT%{_appdir}/bin
+cp -p phpstorm.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{product}.png
 cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install -p %{SOURCE2} $RPM_BUILD_ROOT%{_bindir}/pstorm
-ln -s pstorm $RPM_BUILD_ROOT%{_bindir}/%{name}
+ln -s pstorm $RPM_BUILD_ROOT%{_bindir}/%{product}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/%{name}
+%attr(755,root,root) %{_bindir}/%{product}
 %attr(755,root,root) %{_bindir}/pstorm
 %dir %{_appdir}
 %{_appdir}/help
 %{_appdir}/plugins
 %dir %{_appdir}/bin
-%{_appdir}/bin/%{name}*.vmoptions
-%{_appdir}/bin/%{name}.png
+%{_appdir}/bin/%{product}*.vmoptions
+%{_appdir}/bin/%{product}.png
 %{_appdir}/bin/idea.properties
 %{_appdir}/bin/log.xml
-%attr(755,root,root) %{_appdir}/bin/%{name}.sh
+%attr(755,root,root) %{_appdir}/bin/%{product}.sh
 %attr(755,root,root) %{_appdir}/bin/*.py
 %attr(755,root,root) %{_appdir}/bin/format.sh
 %attr(755,root,root) %{_appdir}/bin/fsnotifier*
@@ -108,5 +109,5 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_appdir}/lib/libpty/linux
 %dir %{_appdir}/lib/libpty/linux/x86*
 %attr(755,root,root) %{_appdir}/lib/libpty/linux/x86*/libpty.so
-%{_desktopdir}/%{name}.desktop
-%{_pixmapsdir}/%{name}.png
+%{_desktopdir}/%{product}.desktop
+%{_pixmapsdir}/%{product}.png
