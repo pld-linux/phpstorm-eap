@@ -2,13 +2,13 @@
 %include	/usr/lib/rpm/macros.java
 Summary:	PhpStorm Early Access Program
 Name:		phpstorm-eap
-Version:	172.3095.16
+Version:	172.3198.4
 Release:	1
 # TODO: figure out what's the licensing and redistribution
 License:	?
 Group:		Development/Tools
 Source0:	http://download.jetbrains.com/webide/PhpStorm-EAP-%{version}.tar.gz
-# NoSource0-md5:	a6dce5c8b58e9e645d74599e4324498a
+# NoSource0-md5:	285cc40847fbfb55f25b17e0fa962a32
 NoSource:	0
 Source1:	%{product}.desktop
 Source2:	%{product}.py
