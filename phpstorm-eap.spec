@@ -1,5 +1,4 @@
 %define		product	phpstorm
-%include	/usr/lib/rpm/macros.java
 Summary:	PhpStorm Early Access Program
 Name:		phpstorm-eap
 Version:	173.3942.13
