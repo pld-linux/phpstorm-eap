@@ -63,7 +63,7 @@ rm bin/phpstorm.vmoptions
 rm -r lib/libpty/linux/x86
 %endif
 rm bin/fsnotifier-arm
-%patch0 -p1
+%patch -P0 -p1
 chmod a+rx bin/*.so bin/fsnotifier* lib/libpty/linux/*/libpty.so
 mv bin/phpstorm.png .
 
